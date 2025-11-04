@@ -118,7 +118,6 @@ def unite_signals(x_list):
     return y
 # -------------------------------------------------------- #
 
-
 # ----- VALIDAÇÃO E OPERAÇÕES DE FILTROS QMF ----- #
 def filter_change_z_signal(h):
     """Altera o sinal dos coeficientes ímpares (substitui z por -z)."""
@@ -210,7 +209,6 @@ def filter_iterator(x0, x1, A, d, levels=4):
     return x, multirate_factors, rescale_factors, advance_values
 # ------------------------------------------------ #
 
-
 # ----- DECOMPOSIÇÃO E RECONSTRUÇÃO MULTINÍVEL ----- #
 def multivel_multirate_decomposition(x, h0, h1, A, d, levels=4):
     """
@@ -274,7 +272,6 @@ def multivel_multirate_reconstruction(x_decomp, g0, g1, A, d):
     return xr
 # -------------------------------------------------- #
 
-
 # ----- VISUALIZAÇÃO E CONFIGURAÇÃO ----- #
 def configure_plot_style():
     """Configura estilo global dos gráficos."""
@@ -336,7 +333,6 @@ def print_decomposition_results(x, xr, levels, fs, rmse):
     print(f"Erro médio quadrático (RMSE): {rmse:.6e}")
     print("="*50 + "\n")
 # --------------------------------------- #
-
 
 # ----- EXECUÇÃO PRINCIPAL ----- #
 def main():

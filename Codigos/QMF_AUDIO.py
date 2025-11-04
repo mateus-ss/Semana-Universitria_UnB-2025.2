@@ -67,7 +67,6 @@ def print_signal_info(signal: np.ndarray, fs: int):
     print("="*60 + "\n")
 # ------------------------------------------------------ #
 
-
 # ----- DECOMPOSIÇÃO WAVELET ----- #
 def decompose_wavelet(signal: np.ndarray, wavelet: str = 'db5', 
                       level: int = 4) -> Tuple[np.ndarray, list]:
@@ -90,7 +89,6 @@ def decompose_wavelet(signal: np.ndarray, wavelet: str = 'db5',
     
     return coeff_array, coeff_slices
 # -------------------------------- #
-
 
 # ----- COMPRESSÃO E LIMIARIZAÇÃO ----- #
 def threshold_coefficients(coeff_array: np.ndarray, 
@@ -131,7 +129,6 @@ def count_nonzero_coefficients(coeff_array: np.ndarray,
     return np.sum(np.abs(coeff_array) >= tolerance)
 # ------------------------------------- #
 
-
 # ----- RECONSTRUÇÃO DE SINAIS ----- #
 def reconstruct_signal(coeff_array: np.ndarray, coeff_slices: list,
                        wavelet: str, original_length: int) -> np.ndarray:
@@ -159,7 +156,6 @@ def reconstruct_signal(coeff_array: np.ndarray, coeff_slices: list,
     
     return signal_reconstructed
 # ---------------------------------- # 
-
 
 # ----- MÉTRICAS DE QUALIDADE ----- #
 def calculate_snr(original: np.ndarray, reconstructed: np.ndarray) -> float:
@@ -196,7 +192,6 @@ def calculate_compression_ratio(total_coeffs: int,
     """
     return total_coeffs / kept_coeffs if kept_coeffs > 0 else float('inf')
 # --------------------------------- #
-
 
 # ----- ANÁLISE DE COMPRESSÃO ----- #
 def analyze_compression(signal: np.ndarray, coeff_array: np.ndarray,
@@ -254,7 +249,6 @@ def analyze_compression(signal: np.ndarray, coeff_array: np.ndarray,
     return snr_values, percentages
 # --------------------------------- #
 
-
 # ----- VISUALIZAÇÃO ----- #
 def plot_snr_analysis(percentages: np.ndarray, snr_values: list,
                      wavelet: str = 'db5'):
@@ -283,7 +277,6 @@ def plot_snr_analysis(percentages: np.ndarray, snr_values: list,
     plt.tight_layout()
     plt.show()
 # ------------------------ #
-
 
 # ----- EXPORTAÇÃO E REPRODUÇÃO DE ÁUDIO ----- #
 def save_reconstructed_audio(signal: np.ndarray, coeff_array: np.ndarray,
@@ -332,22 +325,21 @@ def save_reconstructed_audio(signal: np.ndarray, coeff_array: np.ndarray,
     print("\n" + "="*60)
     print("ÁUDIO SALVO COM SUCESSO")
     print("="*60)
-    print(f"📁 Arquivo: {output_filename}")
-    print(f"📊 Coeficientes mantidos: {keep_percentage}%")
-    print(f"🗜️  Taxa de compressão: {compression:.1f}x")
-    print(f"📈 SNR: {snr:.2f} dB")
+    print(f" Arquivo: {output_filename}")
+    print(f" Coeficientes mantidos: {keep_percentage}%")
+    print(f"  Taxa de compressão: {compression:.1f}x")
+    print(f" SNR: {snr:.2f} dB")
     print("="*60 + "\n")
     
     # Reproduz se solicitado
     if play_audio:
-        print(f"▶️  Reproduzindo áudio com {keep_percentage}% dos coeficientes...")
+        print(f"  Reproduzindo áudio com {keep_percentage}% dos coeficientes...")
         sd.play(normalized, fs)
         sd.wait()
         print("✓ Reprodução concluída\n")
     
     return normalized
 # -------------------------------------------- #
-
 
 # ----- FUNÇÃO PRINCIPAL ----- #
 def main():
