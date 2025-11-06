@@ -5,7 +5,6 @@ Implementação didática de Quadrature Mirror Filter Bank para decomposição
 e reconstrução de imagens.
 
 Baseado nos conceitos apresentados no minicurso IEEE SPS UnB - SEMUNI 2025
-e no artigo "Two-Channel Quadrature Mirror Filter Bank: An Overview"
 
 Refatoração e organização: IEEE SPS UnB
 """
