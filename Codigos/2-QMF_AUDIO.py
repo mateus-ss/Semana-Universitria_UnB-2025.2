@@ -1,12 +1,12 @@
 """
 ===== COMPRESSÃO DE ÁUDIO POR WAVELETS - ANÁLISE DE SNR =====
 
-Implementação didática para análise de compressão de sinais de áudio utilizando
-a Transformada Wavelet Discreta (DWT) com limiarização e reconstrução parcial.
+Implementação didática para análise de compressão de sinais de áudio
+utilizando a Transformada Wavelet Discreta (DWT) com limiarização e reconstrução parcial.
 
-Este código foi desenvolvido como parte do minicurso 
+Este código foi desenvolvido como parte do minicurso
 "Introdução à Compressão e Processamento de Áudio com Wavelets",
-ministrado pelo IEEE Signal Processing Society Student Chapter da 
+ministrado pelo IEEE Signal Processing Society Student Chapter da
 Universidade de Brasília (IEEE SPS UnB) durante a Semana Universitária (SEMUNI) 2025.
 
 O script é estruturado em módulos independentes, abordando conceitos fundamentais de:

@@ -1,12 +1,25 @@
 """
 ===== PROCESSAMENTO DE IMAGENS COM FILTROS QMF =====
 
-Implementação didática de Quadrature Mirror Filter Bank para decomposição
-e reconstrução de imagens.
+Implementação didática de bancos de filtros QMF (Quadrature Mirror Filter Banks)
+para decomposição e reconstrução de imagens.
 
-Baseado nos conceitos apresentados no minicurso IEEE SPS UnB - SEMUNI 2025
+Este código foi desenvolvido como parte do minicurso
+"Introdução ao Processamento de Imagens com Filtros QMF",
+ministrado pelo IEEE Signal Processing Society Student Chapter da
+Universidade de Brasília (IEEE SPS UnB) durante a Semana Universitária (SEMUNI) 2025.
+
+O script é estruturado de forma modular, abordando conceitos fundamentais de:
+- Decomposição multibanda de imagens;
+- Reconstrução por bancos de filtros QMF;
+- Relação entre filtragem QMF e transformadas wavelet bidimensionais;
+- Visualização e análise dos subbandas gerados.
+
+Baseado em material de referência acadêmica sobre filtragem QMF e processamento de imagens,
+refatorado para fins didáticos, clareza e eficiência computacional.
 
 Refatoração e organização: IEEE SPS UnB
+
 """
 
 import numpy as np

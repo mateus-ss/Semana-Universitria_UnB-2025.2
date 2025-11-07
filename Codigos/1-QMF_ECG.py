@@ -1,18 +1,22 @@
 """
 ===== ANÁLISE MULTINÍVEL E MULTITAXA DE SINAIS =====
 
-Implementação didática para decomposição e reconstrução de sinais utilizando filtros QMF.
+Implementação didática para decomposição e reconstrução de sinais
+utilizando filtros QMF (Quadrature Mirror Filters).
 
-Este código foi desenvolvido como parte do minicurso "Introdução ao Processamento de Sinais com Filtros QMF",
-ministrado pelo IEEE Signal Processing Society Student Chapter da Universidade de Brasília (IEEE SPS UnB)
-durante a Semana Universitária (SEMUNI) 2025.
+Este código foi desenvolvido como parte do minicurso
+"Introdução ao Processamento de Sinais com Filtros QMF",
+ministrado pelo IEEE Signal Processing Society Student Chapter da
+Universidade de Brasília (IEEE SPS UnB) durante a Semana Universitária (SEMUNI) 2025.
 
-O script apresenta uma estrutura modular e otimizada para fins educacionais, abordando conceitos de:
+O script é estruturado em módulos independentes, abordando conceitos fundamentais de:
 - Análise e síntese multibanda;
 - Processamento multitaxa;
-- Decomposição e reconstrução de sinais.
+- Decomposição e reconstrução de sinais;
+- Relação entre filtros QMF e transformadas wavelet.
 
-Baseado em material fornecido pelo professor orientador e adaptado para maior clareza e eficiência.
+Baseado em material de referência acadêmica sobre filtragem QMF,
+refatorado para fins didáticos, clareza e eficiência computacional.
 
 Refatoração e organização: IEEE SPS UnB
 """
