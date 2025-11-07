@@ -19,7 +19,6 @@ Baseado em material de referência acadêmica sobre filtragem QMF e processament
 refatorado para fins didáticos, clareza e eficiência computacional.
 
 Refatoração e organização: IEEE SPS UnB
-
 """
 
 import numpy as np
