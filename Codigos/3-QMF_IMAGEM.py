@@ -105,6 +105,10 @@ class SamplingOps:
 # ----------------------------------- #
 
 # ----- DECOMPOSIÇÃO QMF ----- #
+def apply_filter(x, h):
+    y = signal.convolve(x, h, mode = 'same')
+    return  y
+
 class QMFDecomposer:
     """Realiza decomposição QMF de imagens."""
 
@@ -123,8 +127,8 @@ class QMFDecomposer:
             Tupla (low, high) com componentes de baixa e alta frequência
         """
         # Convolução com filtros
-        low = signal.convolve(signal_1d, self.filters.h0, mode='same')
-        high = signal.convolve(signal_1d, self.filters.h1, mode='same')
+        low = apply_filter(signal_1d, self.filters.h0)
+        high = apply_filter(signal_1d, self.filters.h1)
         
         # Downsampling
         low = self.sampling.downsample(low)
@@ -209,8 +213,8 @@ class QMFReconstructor:
         high_up = self.sampling.upsample(high)
         
         # Filtragem
-        low_filt = signal.convolve(low_up, self.filters.g0, mode='same')
-        high_filt = signal.convolve(high_up, self.filters.g1, mode='same')
+        low_filt = apply_filter(low_up, self.filters.g0)
+        high_filt = apply_filter(high_up, self.filters.g1)
         
         # Soma e ajuste de comprimento
         reconstructed = low_filt + high_filt
@@ -281,6 +285,25 @@ class QMFReconstructor:
 # ---------------------------- #
 
 # ----- MÉTRICAS E AVALIAÇÃO ----- #
+def scale_for_visualization(data: np.ndarray) -> np.ndarray:
+    """
+    Escala dados para visualização (normaliza para [0, 1]).
+    
+    Args:
+        data: Array de entrada
+        
+    Returns:
+        Array normalizado
+    """
+    data_abs = np.abs(data)
+    data_min = data_abs.min()
+    data_max = data_abs.max()
+    
+    if data_max - data_min < 1e-10:
+        return np.zeros_like(data_abs)
+    
+    return (data_abs - data_min) / (data_max - data_min)
+
 class ImageQualityEvaluator:
     """Calcula métricas de qualidade de imagem."""
     
@@ -302,7 +325,7 @@ class ImageQualityEvaluator:
         if mse == 0:
             psnr = float('inf')
         else:
-            max_pixel = 1.0  # Assumindo imagem normalizada [0, 1]
+            max_pixel = np.max(original)  # Assumindo imagem normalizada [0, 1]
             psnr = 10 * np.log10(max_pixel ** 2 / mse)
         
         return QualityMetrics(mse=mse, psnr=psnr)
@@ -373,7 +396,7 @@ class QMFVisualizer:
         
         # Imagem Reconstruída
         plt.subplot(1, 3, 3)
-        plt.imshow(reconstructed, cmap='gray')
+        plt.imshow(scale_for_visualization(reconstructed), cmap='gray')
         plt.title(f'Imagem Reconstruída\nPSNR: {metrics.psnr:.2f} dB\n'
                  f'MSE: {metrics.mse:.2e}', 
                  fontsize=14, fontweight='bold')
@@ -404,7 +427,7 @@ class QMFVisualizer:
         
         for ax, (band_name, title) in zip(axes.flat, configs):
             data = getattr(subbands, band_name)
-            im = ax.imshow(data, cmap='gray')
+            im = ax.imshow(scale_for_visualization(data), cmap='gray')
             ax.set_title(title, fontsize=12, fontweight='bold')
             ax.axis('off')
             plt.colorbar(im, ax=ax, fraction=0.046)
@@ -430,8 +453,9 @@ class ImageLoader:
         Returns:
             Imagem normalizada em escala de cinza [0, 1]
         """
-        img = Image.open(image_path).convert('L')
-        return np.array(img) / 255.0
+        img = Image.open(image_path).convert('F')
+        img = np.array(img, dtype=np.float64)
+        return img / np.max(img)
     
     @staticmethod
     def generate_synthetic_image(size: int = 256) -> np.ndarray:
@@ -535,8 +559,8 @@ class QMFPipeline:
             image = self.loader.load_image(image_path)
         else:
             if image_path:
-                print(f"\n⚠️  Imagem '{image_path}' não encontrada.")
-            print("📷 Gerando imagem de teste sintética...")
+                print(f"\n Imagem '{image_path}' não encontrada.")
+            print(" Gerando imagem de teste sintética...")
             image = self.loader.generate_synthetic_image()
         
         # Processar
@@ -564,7 +588,7 @@ class QMFPipeline:
 def main():
     """Função principal de execução."""
     # Configurar caminho da imagem (ajuste conforme necessário)
-    image_path = r'C:\Users\Adm\Documents\Git\Semana-Universit-ria_UnB-2025.2\Codigos\IMG.jpg'
+    image_path = r"C:\Users\Adm\Documents\Git\Semana-Universitria_UnB-2025.2\Codigos\IMG.jpg"
     
     # Executar pipeline
     pipeline = QMFPipeline()
