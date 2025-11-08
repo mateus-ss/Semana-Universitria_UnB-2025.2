@@ -1,0 +1,21 @@
+[1] P. P. Vaidyanathan. Multirate Systems and Filter Banks. Prentice-Hall Signal Processing Series. Prentice-Hall, Englewood Cliffs, N.J., 1993.
+
+[2] A. H. Jazwinski. Stochastic Processes and Filtering Theory. Dover Publications; Illustrated edition, 2013.
+
+[3] S. K. Mitra. Digital signal processing: a computer-based approach. McGraw-Hill, New York, NY, 2011.
+
+[4] A. V. Oppenheim and R. W. Schafer. Discrete-Time Signal Processing. Pearson, 3ª edição, 2010.
+
+[5] S. Mallat. Compressed Sensing: Theory and Applications. Academic Press, 2008. 3ª edição.
+
+[6] Y. C. Eldar and Gitta Kutyniok (editores). Compressed Sensing: Theory and Applications. Cambridge University Press, 2012.
+
+[7] D. Simon. Optimal State Estimation. Wiley, 2006.
+
+[8] S. H. Ross. Introduction to Probability Models. Academic Press, 2007.
+
+[9] C. M. Bishop. Pattern Recognition and Machine Learning. Springer, 2016.
+
+[10] R. O. Duda, P. E. Hart, and D. G. Stork. Pattern Classification. Wiley-Interscience, 2000. 2ª edição.
+
+https://onlinelibrary.wiley.com/doi/10.1155/2013/815619
